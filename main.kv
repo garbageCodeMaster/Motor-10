@@ -1,0 +1,88 @@
+MDFloatLayout:
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        MapView:
+            id: mapview
+            lat: 59.934
+            lon: 30.315644
+            zoom: 14
+            #size_hint: 0.5, 0.5
+            #pos_hint: {"x": .25, "y": .25}
+
+    MDBoxLayout:
+        size: (700, 300)
+        size_hint: None, None
+        pos_hint: { 'center_x': 0.5}
+        orientation: 'vertical'
+        
+        MDBoxLayout:
+            orientation: 'horizontal'
+            adaptive_height: True
+
+            IconRightWidget:
+                icon: 'map-marker'
+                icon_size: "36sp"
+                theme_icon_color: "Custom"
+                icon_color: "red"
+                size_hint: None, None
+                id: add_btn
+                on_press: app.add_marker(entry.text)
+
+            MDTextField:
+                mode: "rectangle"
+                background_color: app.theme_cls.bg_normal
+                halign: 'center'
+                id: entry
+                hint_text: "Введите адрес"
+                line_color_focus: "red"
+                helper_text: "Пример: Новоизмайловский проспект, 16к9"
+                helper_text_color_focus: "red"
+                helper_text_mode: "persistent"
+                font_size: 20
+                size_hint: .5, None
+                width: 200
+                multiline: False
+                adaptive_width: False
+            
+            IconRightWidget:
+                icon: 'map'
+                icon_size: "36sp"
+                theme_icon_color: "Custom"
+                icon_color: "red"
+                size_hint: None, None
+                id: algorithm_btn
+                on_press: app.shortest_path()
+           
+        MDBoxLayout:
+            ScrollView:
+                pos_hint: {'center_y': .5, 'center_x': .5}
+                size_hint: .9, .9   
+                
+                MDList:
+                    id: container
+                    
+
+<ListItemWithCheckbox>: 
+    id: the_list_item
+    markup: True
+    theme_text_color: "Custom"
+    text_color: "red"
+    bg_color: "#434345"
+    radius: [25, 25, 25, 25]
+    font_style: "H4"
+    
+
+    LeftCheckbox:
+        id: check
+        on_release: 
+            root.mark(check, the_list_item)
+
+    IconRightWidget:
+        icon: 'trash-can-outline'
+        icon_size: "30sp"
+        theme_icon_color: "Custom"
+        icon_color: "red"
+        on_release:
+            root.delete_item(the_list_item)
+
