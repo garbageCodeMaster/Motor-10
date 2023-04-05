@@ -5,6 +5,13 @@ dotenv.config()
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@components": "./src/components",
+      "@pages": "./src/pages",
+      '@assets': './src/assets',
+    },
+  },
   server: {
     port: Number(process.env.CLIENT_PORT) || 3000,
   },
