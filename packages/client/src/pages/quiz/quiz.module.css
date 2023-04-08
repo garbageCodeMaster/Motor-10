@@ -1,3 +1,66 @@
-.quiz {
-  color: var(--bb);
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 23px;
+}
+
+.quizName {
+  margin-bottom: 7px;
+}
+
+.quizTimer {
+  display: flex;
+
+  font-size: 30px;
+}
+
+.quizTimerText {
+  padding-right: 6px;
+}
+
+.quizGame {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px 0;
+
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.quizGameImg {
+  width: 48%;
+  flex-grow: 0;
+}
+
+.quizGameQuestions {
+  width: 48%;
+  flex-grow: 0;
+}
+
+.questionName {
+  margin-bottom: 25px;
+}
+
+.quizGameAnswers {
+  flex-grow: 1;
+}
+
+.answerHeader {
+  margin-bottom: 23px;
+}
+
+.answerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.answerText {
+  margin-left: 23px;
+}
+
+.quizNextButton {
+  float: right;
 }
