@@ -1,0 +1,28 @@
+.topic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px
+}
+.changeTopic {
+  cursor: pointer;
+  width: 235px;
+  height: 172px;
+  position: relative;
+}
+
+.topicSelectName {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.topicMoreButton {
+  float: right;
+  margin-top: 50px;
+}
+
+.cardHeader {
+  display: flex;
+}
