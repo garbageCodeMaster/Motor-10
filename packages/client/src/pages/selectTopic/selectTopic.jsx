@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Button, ButtonBack} from '../../components'
 
-import img1 from 'C:/Projects/Motor-10/packages/client/src/assets/topic1.png'
-import img2 from 'C:/Projects/Motor-10/packages/client/src/assets/topic2.png'
-import img3 from 'C:/Projects/Motor-10/packages/client/src/assets/topic3.png'
-import img4 from 'C:/Projects/Motor-10/packages/client/src/assets/topic4.png'
+import img1 from '../../assets/topic1.png'
+import img2 from '../../assets/topic2.png'
+import img3 from '../../assets/topic3.png'
+import img4 from '../../assets/topic4.png'
 
 import styles from './selectTopic.module.css'
+import QuizAPI from '../../api/quiz'
 
 const SelectTopic = () => {
+  const [quizzes, setQuizzes] = useState([]);
+
+  useEffect(() => {
+    setQuizzes(QuizAPI.getQuizzes())
+  }, [])
+
 
   return (
     <div className="card">
@@ -24,6 +31,7 @@ const SelectTopic = () => {
       </div>
 
       <div className={styles.topic}>
+        {quizzes}
 
         <div className={styles.changeTopic}>
           <img src={img1}/>

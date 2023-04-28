@@ -1,8 +1,13 @@
+import AppRouting from '../pages/appRouting'
+import { Layout } from '../components'
 import './App.css'
 
 function App() {
-
-  return <div className="App">Вот тут</div>
+  return (
+    <Layout>
+      <AppRouting/>
+    </Layout>
+  )
 }
 
 export default App

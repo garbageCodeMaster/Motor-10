@@ -1,26 +1,27 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "type": "module",
   "scripts": {
     "build": "tsc --p ./tsconfig.prod.json",
     "preview": "node ./dist/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon esm index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "jest ."
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "pg": "^8.8.0",
-    "prettier": "^2.7.1"
+    "cors": "2.8.5",
+    "cross-env": "7.0.3",
+    "dotenv": "16.0.2",
+    "express": "4.18.1",
+    "pg": "8.8.0",
+    "prettier": "2.7.1",
+    "sequelize": "6.31.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19",
-    "prettier": "^2.7.1"
+    "nodemon": "2.0.19",
+    "prettier": "2.7.1"
   },
   "license": "MIT"
 }
