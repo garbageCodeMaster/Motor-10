@@ -9,8 +9,8 @@ const AppRouting = () => {
     return (
         <Routes>
             <Route path="/" element={<SelectTopic/>} />
-            <Route path="/preview" element={<Preview/>} />
-            <Route path="/quiz/:id" element={<Quiz/>} />
+            <Route path="/quiz/:id" element={<Preview/>} />
+            <Route path="/game/:id" element={<Quiz/>} />
         </Routes>
     )
 }

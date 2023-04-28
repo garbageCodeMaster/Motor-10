@@ -5,7 +5,7 @@ const getQuizzes = async () => {
 
     if (response.ok) { 
         const json = await response.json()
-        
+
         return json
     } else {
         return []
@@ -18,7 +18,6 @@ const getQuizById = async (id) => {
     return await response.json()
 }
   
-
 const QuizAPI = {
     getQuizzes,
     getQuizById
