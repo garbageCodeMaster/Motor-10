@@ -10,7 +10,7 @@ const AppRouting = () => {
         <Routes>
             <Route path="/" element={<SelectTopic/>} />
             <Route path="/preview" element={<Preview/>} />
-            <Route path="/quiz" element={<Quiz/>} />
+            <Route path="/quiz/:id" element={<Quiz/>} />
         </Routes>
     )
 }

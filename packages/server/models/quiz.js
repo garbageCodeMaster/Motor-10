@@ -28,6 +28,10 @@ const Quiz = sequelize.define('Quiz', {
     allowNull: false,
     field: 'point_value',
   },
+  imageUrl: {
+    type: DataTypes.TEXT,
+    field: 'image_url',
+  },
   createdAt: {
     type: DataTypes.DATE,
     allowNull: false,

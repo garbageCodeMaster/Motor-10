@@ -3,7 +3,13 @@ import { API_URL } from '../constants'
 const getQuizzes = async () => {
     const response = await fetch(API_URL + '/quiz')
 
-    return await response.json()
+    if (response.ok) { 
+        const json = await response.json()
+        
+        return json
+    } else {
+        return []
+    }
 }
 
 const getQuizById = async (id) => {

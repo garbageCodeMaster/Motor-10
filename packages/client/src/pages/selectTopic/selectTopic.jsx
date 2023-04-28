@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button, ButtonBack} from '../../components'
 
 import img1 from '../../assets/topic1.png'
@@ -13,9 +14,19 @@ const SelectTopic = () => {
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    setQuizzes(QuizAPI.getQuizzes())
+    const fetchData = async () => {
+      const result = await QuizAPI.getQuizzes()
+
+      setQuizzes(result)
+    }
+    
+    fetchData()
   }, [])
 
+
+  const openQuiz = () => {
+
+  }
 
   return (
     <div className="card">
@@ -31,12 +42,15 @@ const SelectTopic = () => {
       </div>
 
       <div className={styles.topic}>
-        {quizzes}
+        
+      {quizzes.map(quiz => (
+        <Link to={`/quiz/${quiz.id}`} className={styles.changeTopic} >
+          <img src={quiz.imageUrl ? quiz.imageUrl : img1}/>
+          <div className={styles.topicSelectName}>{quiz.title}</div>
+        </Link>
+      ))}
 
-        <div className={styles.changeTopic}>
-          <img src={img1}/>
-          <div className={styles.topicSelectName}>History</div>
-        </div>
+
 
         <div className={styles.changeTopic}>
           <img src={img2}/>

@@ -4,7 +4,7 @@ export const allQuizzes = async (req, res) => {
   const quizzes = await Quiz.findAll()
 
   if (quizzes) {
-    res.status(200).json({ quizzes })
+    res.status(200).json(quizzes)
   } else {
     res.status(404).json({ reason: 'no quizzes found' })
   }
@@ -17,12 +17,15 @@ export const allQuizQuestions = async (req, res) => {
   const quiz = await Quiz.findByPk(id, { 
     include: {
       model: Question,
-      include: Answer
+      include: {
+        model: Answer,
+        attributes: { exclude: ['isCorrect'] }
+      }
     }
   })
 
   if (quiz) {
-    res.status(200).json({ quiz })
+    res.status(200).json(quiz)
   } else {
     res.status(404).json({ reason: 'no questions found' })
   }

@@ -16,7 +16,3 @@ createClientAndConnect()
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`)
 })
-
-
-//console.log(allQuizzes())
-//fetch(`localhost:${port}/`).then(res => console.log(res.json()))
