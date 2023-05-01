@@ -33,21 +33,29 @@ export const allQuizQuestions = async (req, res) => {
 
 export const correctQuizAnswers = async (req, res) => {
   const { id } = req.params
+  //const clientAnswers = req.body
 
-  const answers = await Answer.findAll({
+  const correctAnswers = await Question.findAll({
     where: {
-      is_correct: true,
+      quiz_id: id,
     },
     include: { 
-      model: Question, 
+      model: Answer, 
       where: {
-        quiz_id: id,
+        is_correct: true,
       }
     }
   })
 
-  if (answers) {
-    res.status(200).json({ answers })
+  if (correctAnswers) {
+    //const mistakes = correctAnswers.filter((ans, i) => ans.text !== clientAnswers[i])
+
+    //if (mistakes.length) {
+      //
+      res.status(200).json(correctAnswers)
+    //} else {
+    //  res.status(200).json(correctAnswers)
+    //}
   } else {
     res.status(404).json({ reason: 'no correct answer found' })
   }

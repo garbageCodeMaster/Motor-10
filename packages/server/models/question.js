@@ -3,7 +3,7 @@ import { sequelize } from '../db.js';
 
 import { Answer, Quiz } from "./index.js";
 
-const Question = sequelize.define('Question', {
+const Question = sequelize.define('question', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
