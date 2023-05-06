@@ -1,28 +1,29 @@
-import { Client } from 'pg'
+import { Sequelize } from 'sequelize'
+//import { User, Quiz, Question, Answer } from './models/index.js'
 
 const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, POSTGRES_PORT } =
   process.env
 
+const sequelizeOptions = {
+  port: Number(POSTGRES_PORT),
+  dialect: 'postgres',
+}
+
+export const sequelize = new Sequelize('quiz_db', 'quiz_user', '11', {
+  port: Number(POSTGRES_PORT),
+  dialect: 'postgres',
+  define: { timestamps: false }
+})
+
+//await sequelize.sync()
 export const createClientAndConnect = async () => {
-  try {
-    const client = new Client({
-      user: POSTGRES_USER,
-      host: 'localhost',
-      database: POSTGRES_DB,
-      password: POSTGRES_PASSWORD,
-      port: Number(POSTGRES_PORT),
-    })
+    // try {
+    //   await sequelize.authenticate()
+  
+    //   await sequelize.sync()
+    // } catch (error) {
+    //   console.error(error)
+    // }
 
-    await client.connect()
-
-    const res = await client.query('SELECT NOW()')
-    console.log('  ➜ 🎸 Connected to the database at:', res?.rows?.[0].now)
-    client.end()
-
-    return client
-  } catch (e) {
-    console.error(e)
-  }
-
-  return null
+    // return sequelize
 }
