@@ -7,6 +7,13 @@ import appStyles from '../../app/App.css'
 
 const Quiz = () => {
 
+  const question = [
+    {
+      questionText: 'jopa?',
+      questionOptions:['jopa','ass','tittis','cagina']
+    }
+  ]
+
   return (
     <div className="card">
       <div className={styles.cardHeader}>
