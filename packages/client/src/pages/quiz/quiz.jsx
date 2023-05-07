@@ -1,30 +1,69 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { json, useParams } from 'react-router-dom'
 import { Button } from '../../components'
 
 import img from '@assets/history1.png'
 import styles from './quiz.module.css'
 import appStyles from '../../app/App.css'
+import QuizAPI from '../../api/quiz'
 
 const Quiz = () => {
+  const { id } = useParams();
 
-  const question = [
-    {
-      questionText: 'jopa?',
-      questionOptions:['jopa','ass','tittis','cagina']
+  const [allQuestions, setAllQuestions] = useState(null)
+  const [currentQuestions, setCurrentQuestion] = useState(0)
+  const [myAnswers, setMyAnswers] = useState([])
+  const [showScore, setShowScore] = useState(false)
+  const [value, setValue] = useState(null);
+    
+  function changeHandler(event) {
+    setValue(event.target.value)
+
+  }
+  
+  const toNextQuestion = () => {
+    console.log('next question')
+    if (value === null){
+      return 
     }
-  ]
+    setMyAnswers([...myAnswers, value])
+    const nextQuestion = currentQuestions + 1
+    console.log(value)
+    if (nextQuestion < Object.keys(allQuestions.Questions).length){
+      setCurrentQuestion(nextQuestion)
+    }
+    else{
+      console.log(myAnswers)
+      
+    }
+  }
 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await QuizAPI.getQuizById(id)
+      console.log(result)
+      setAllQuestions(result)
+    }
+    
+    fetchData() 
+  }, []) 
+
+  if (!allQuestions) {
+    return "Loading..."
+  }
+    
   return (
     <div className="card">
       <div className={styles.cardHeader}>
         <div className={styles.quizHeader}>
-          <h1 className={styles.quizName}>History Quiz</h1>
-          <div className={styles.quizText}>Answer the question below</div>
+          <h1 className={styles.quizName}>{allQuestions.title}</h1>
+          <div className={styles.quizText}>Ответе на все вопросы ниже</div>
         </div>
 
         <div className={styles.quizTimer}>
-          <div className={styles.quizTimerText}>Timer:</div>
-          <div className={styles.quizTimerValue}>22:34 Mins</div>
+          <div className={styles.quizTimerText}>Таймер: </div>
+          <div className={styles.quizTimerValue}>{allQuestions.timeLimit}</div>
         </div>
       </div>
 
@@ -34,38 +73,32 @@ const Quiz = () => {
         </div>
 
         <div className={styles.quizGameQuestions}>
-          <h4 className={styles.questionName}>Question 1/5</h4>
-          <div className={styles.questionText}>Guy Bailey, Roy Hackett and Paul Stephenson made history in 1963, as part of a protest against a bus company that refused to employ black and Asian drivers in which UK city?</div>
+          <h4 className={styles.questionName}>Вопрос:{currentQuestions + 1}/{Object.keys(allQuestions.Questions).length}</h4>
+          <div className={styles.questionText}>{allQuestions.Questions[currentQuestions].text}</div>
         </div>
 
         <div className={styles.quizGameAnswers}>
-          <h3 className={styles.answerHeader}>Choose answer</h3>
+          <h3 className={styles.answerHeader}>Выберите вариант ответ:</h3>
           <div className={styles.answerContent}>
+          {allQuestions.Questions[currentQuestions].Answers.map(answer =>  (
             <div className={styles.answer}>
-              <input type="radio" checked/>
-              <label for="" className={styles.answerText}>London</label>
+              <input 
+              type="radio"
+              name="radio" 
+              value={answer.id}
+			        checked={value == answer.id ? true : false}
+              onClick={changeHandler}
+              />
+              <label for="" className={styles.answerText}>{answer.text}</label>
             </div>
-
-            <div className={styles.answer}>
-              <input type="radio" />
-              <label for="" className={styles.answerText}>Edinburgh</label>
-            </div>
-
-            <div className={styles.answer}>
-              <input type="radio" />
-              <label for="" className={styles.answerText}>Liverpool</label>
-            </div>
-
-            <div className={styles.answer}>
-              <input type="radio" />
-              <label for="" className={styles.answerText}>Canary Wharf</label>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className={styles.quizNextButton}>
-        <Button>Next Question</Button>
+      <div className={styles.quizNextButton} onClick={toNextQuestion}>
+        <Button 
+        >Next Question</Button>
       </div>
     </div>
   )
