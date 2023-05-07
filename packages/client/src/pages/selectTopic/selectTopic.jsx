@@ -49,64 +49,7 @@ const SelectTopic = () => {
           <div className={styles.topicSelectName}>{quiz.title}</div>
         </Link>
       ))}
-
-
-
-        <div className={styles.changeTopic}>
-          <img src={img2}/>
-          <div className={styles.topicSelectName}>Medcine</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img3}/>
-          <div className={styles.topicSelectName}>Technology</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img4}/>
-          <div className={styles.topicSelectName}>Agriculture</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img1}/>
-          <div className={styles.topicSelectName}>History</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img2}/>
-          <div className={styles.topicSelectName}>Medcine</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img3}/>
-          <div className={styles.topicSelectName}>Technology</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img4}/>
-          <div className={styles.topicSelectName}>Agriculture</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img1}/>
-          <div className={styles.topicSelectName}>History</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img2}/>
-          <div className={styles.topicSelectName}>Medcine</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img3}/>
-          <div className={styles.topicSelectName}>Technology</div>
-        </div>
-
-        <div className={styles.changeTopic}>
-          <img src={img4}/>
-          <div className={styles.topicSelectName}>Agriculture</div>
-        </div>
-
+        
       </div>
 
       <div className={styles.topicMoreButton}>

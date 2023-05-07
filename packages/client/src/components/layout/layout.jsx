@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input, Button, NavButton } from '..'
 
-import logo from '@assets/logo.png'
+import logo from '../../assets/logo.png'
 import styles from './layout.module.css'
 import navButtonStyles from '../buttonNav/buttonNav.module.css'
 
