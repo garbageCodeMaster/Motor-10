@@ -15,7 +15,11 @@ const getQuizzes = async () => {
 const getQuizById = async (id) => {
     const response = await fetch(API_URL + '/quiz/' + id)
   
-    return await response.json()
+    if (response.ok) { 
+        return await response.json()
+    } else {
+        return []
+    }
 }
   
 const QuizAPI = {
