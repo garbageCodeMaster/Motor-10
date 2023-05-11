@@ -49,6 +49,18 @@ const SelectTopic = () => {
           <div className={styles.topicSelectName}>{quiz.title}</div>
         </Link>
       ))}
+            {quizzes.map(quiz => (
+        <Link to={`/quiz/${quiz.id}`} className={styles.changeTopic} >
+          <img src={quiz.imageUrl ? quiz.imageUrl : img1}/>
+          <div className={styles.topicSelectName}>{quiz.title}</div>
+        </Link>
+      ))}
+      {quizzes.map(quiz => (
+        <Link to={`/quiz/${quiz.id}`} className={styles.changeTopic} >
+          <img src={quiz.imageUrl ? quiz.imageUrl : img1}/>
+          <div className={styles.topicSelectName}>{quiz.title}</div>
+        </Link>
+      ))}
         
       </div>
 

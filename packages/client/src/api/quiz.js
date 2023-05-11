@@ -21,10 +21,28 @@ const getQuizById = async (id) => {
         return []
     }
 }
+
+const checkQuizById = async (id, answers) => {
+    const response = await fetch(API_URL + '/quiz/' + id, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(answers)
+    })
+  
+    if (response.ok) { 
+        return await response.json()
+    } else {
+        return []
+    }
+}
   
 const QuizAPI = {
     getQuizzes,
-    getQuizById
+    getQuizById,
+    checkQuizById
 }
 
 export default QuizAPI

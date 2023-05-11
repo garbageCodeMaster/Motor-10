@@ -9,7 +9,7 @@ const sequelizeOptions = {
   dialect: 'postgres',
 }
 
-export const sequelize = new Sequelize('quiz_db', 'postgres', '123', {
+export const sequelize = new Sequelize('quiz_db', 'quiz_user', '11', {
   port: Number(POSTGRES_PORT),
   dialect: 'postgres',
   define: { timestamps: false }
