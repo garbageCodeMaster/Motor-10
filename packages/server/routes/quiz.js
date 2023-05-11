@@ -5,6 +5,6 @@ const quizRouter = Router()
 
 quizRouter.get('/', allQuizzes)
 .get('/:id', allQuizQuestions)
-.get('/:id/answers', correctQuizAnswers)
+.post('/:id', correctQuizAnswers)
 
 export default quizRouter

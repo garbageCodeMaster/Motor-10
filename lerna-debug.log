@@ -4,11 +4,11 @@
 0 silly argv   globs: [],
 0 silly argv   lernaVersion: '5.6.2',
 0 silly argv   '$0': 'node_modules/.bin/lerna',
-0 silly argv   pkg: 'sequalize'
+0 silly argv   pkg: 'bodyParser'
 0 silly argv }
 1 notice cli v5.6.2
 2 verbose rootPath /home/dm/Documents/web/quiz
-3 error HttpErrorGeneral: 404 Not Found - GET https://registry.yarnpkg.com/sequalize - Not found
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.yarnpkg.com/bodyParser - Not found
 3 error     at /home/dm/Documents/web/quiz/node_modules/npm-registry-fetch/lib/check-response.js:95:15
 3 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 3 error     at async RegistryFetcher.packument (/home/dm/Documents/web/quiz/node_modules/pacote/lib/registry.js:92:19)
